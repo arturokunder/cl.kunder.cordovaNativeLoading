@@ -29,15 +29,9 @@ public class SpinnerPlugin extends CordovaPlugin {
 			if( !isShown )
 			{
 				isShown = true;
-				
-				// Args
-				JSONObject argsObj = args.getJSONObject(0);
-				Boolean showOverlay = argsObj.has(PARAM_SHOW_OVERLAY) ? argsObj.getBoolean(PARAM_SHOW_OVERLAY) : null;
-				Integer hideTimeout = argsObj.has(PARAM_SHOW_TIMEOUT) ? argsObj.getInt(PARAM_SHOW_TIMEOUT) : null;
-				Boolean isFullScreen = argsObj.has(PARAM_IS_FULLSCREEN) ? argsObj.getBoolean(PARAM_IS_FULLSCREEN) : null;
-	
+
 				// Show
-				show(context, showOverlay, hideTimeout, isFullScreen);
+				show(context);
 			}
 			
 			callbackContext.success();
@@ -61,19 +55,10 @@ public class SpinnerPlugin extends CordovaPlugin {
 		return false;
 	}
 	
-	private boolean show(final Activity context, Boolean showOverlay, Integer hideTimeout, Boolean isFullscreen) {
+	private boolean show(final Activity context) {
 		// Loading spinner
 		Intent intent = new Intent(context, ProgressActivity.class);
-		if (showOverlay != null) intent.putExtra(ProgressActivity.EXTRA_SHOW_OVERLAY, showOverlay);
-		if (isFullscreen != null) intent.putExtra(ProgressActivity.EXTRA_IS_FULLSCREEN, isFullscreen);
 		context.startActivity(intent);
-		
-		if (hideTimeout != null) {
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() { hide(context); }
-			}, hideTimeout*1000);
-		}
 		
 		return true;
 	}
