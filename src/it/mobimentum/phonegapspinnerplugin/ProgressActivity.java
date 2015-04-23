@@ -10,6 +10,10 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 
 public class ProgressActivity extends Activity {
 	
@@ -37,9 +41,9 @@ public class ProgressActivity extends Activity {
 			
 			return;
 		}
-		
+		//Se puede prescindir de estos parámetros, no tienen importancia
 		// Parameters
-		Bundle extras = intent.getExtras();
+		/*Bundle extras = intent.getExtras();
 		boolean showOverlay = extras == null || extras.getBoolean(EXTRA_SHOW_OVERLAY, true);
 		boolean isFullscreen = extras != null && extras.getBoolean(EXTRA_IS_FULLSCREEN, false);
 
@@ -47,23 +51,32 @@ public class ProgressActivity extends Activity {
 		if (isFullscreen) {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		}
+		}*/
 
 		// ProgressBar
-		ProgressBar bar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		params.addRule(RelativeLayout.CENTER_IN_PARENT);
-		bar.setLayoutParams(params);
-		bar.setBackgroundColor(Color.TRANSPARENT);
-		
-		// Layout
-		RelativeLayout layout = new RelativeLayout(this);
-		if (showOverlay) layout.setBackgroundColor(Color.parseColor("#aa000000"));
-		layout.addView(bar);
-		
-		// Theme
-		setTheme(android.R.style.Theme_Translucent_NoTitleBar);
-		setContentView(layout);
+		ProgressBar progressBar = new ProgressBar(this,null,android.R.attr.progressBarStyle);
+        TextView textView = new TextView(this,null,android.R.attr.textAppearanceMedium);
+        textView.setText("Procesando");
+        textView.setTextColor(Color.WHITE);
+        LinearLayout.LayoutParams paramsTextView = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        paramsTextView.setMargins(0,20,0,0);
+        textView.setLayoutParams(paramsTextView);
+
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        RelativeLayout layoutPrincipal = new RelativeLayout(this);
+        layoutPrincipal.setBackgroundColor(Color.parseColor("#d9000000"));
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+        linearLayout.addView(progressBar);
+        linearLayout.addView(textView);
+        linearLayout.setLayoutParams(params);
+
+        layoutPrincipal.addView(linearLayout);
+        setTheme(android.R.style.Theme_Translucent_NoTitleBar);
+        setContentView(layoutPrincipal);
 	}
 	
 	@Override
@@ -78,4 +91,8 @@ public class ProgressActivity extends Activity {
 		
 		super.onNewIntent(intent);
 	}
+	@Override
+    public void onBackPressed() {
+        
+    }
 }
