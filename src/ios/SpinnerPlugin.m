@@ -34,35 +34,6 @@
 
     [view addSubview:label];
     [self.viewController.view addSubview:view];
-    
-    // Parse parameters
-    if([params objectForKey:PARAM_AUTO_HIDE_TIMEOUT])
-    {
-        id connectiontimeout =[params objectForKey:PARAM_AUTO_HIDE_TIMEOUT];
-        
-        if([connectiontimeout isKindOfClass:[NSString class]])
-        {
-            NSScanner* scan = [NSScanner scannerWithString:(NSString*)connectiontimeout];
-            [scan scanInt:&connectionTimeout];
-        }
-        else if( [connectiontimeout isKindOfClass:[NSNumber class]] )
-        {
-            connectionTimeout = [connectiontimeout intValue];
-        }
-    }
-    
-    id overlayParam = [params objectForKey:PARAM_SHOW_OVERLAY];
-    if ([overlayParam isKindOfClass:[NSString class]])
-    {
-        if( [overlayParam isEqualToString:@"false"] )
-        {
-            showOverlay = NO;
-        }
-    }
-    else if (![overlayParam boolValue])
-    {
-        showOverlay = YES; // showOverlay defaults to YES if undefined
-    }
         
     if(!indicator)
     {
@@ -95,20 +66,8 @@
         [indicator removeFromSuperview];
     }
     
-    if( connectionTimeout > 0 )
-    {
-        NSTimer *timer __attribute__((unused))= [NSTimer scheduledTimerWithTimeInterval:connectionTimeout target:self selector:@selector(hideAfterTimeout:) userInfo:Nil repeats:NO];
-    }
-    
     [view addSubview:indicator];
     [indicator startAnimating];
-}
-
-
--(void)hideAfterTimeout:(NSTimer*)timer
-{
-    [timer invalidate];
-    [self hide:nil];
 }
 
 -(void)hide:(CDVInvokedUrlCommand*)options
@@ -116,12 +75,6 @@
     [indicator stopAnimating];
     [indicator removeFromSuperview];
     indicator = nil;
-}
-
--(void)dispose
-{
-    [super dispose];
-    indicator=nil;
 }
 
 @end

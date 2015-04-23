@@ -18,12 +18,8 @@ import android.widget.LinearLayout;
 public class ProgressActivity extends Activity {
 	
 	public static final String ACTION_HIDE_PROGRESS = "ProgressActivity.ACTION_HIDE_PROGRESS";
-
-	public static final String EXTRA_SHOW_OVERLAY = "ProgressActivity.EXTRA_SHOW_OVERLAY";
 	
-	public static final String EXTRA_IS_FULLSCREEN = "ProgressActivity.EXTRA_IS_FULLSCREEN";
-	
-	private static final String TAG = ProgressActivity.class.getSimpleName();
+	//private static final String TAG = ProgressActivity.class.getSimpleName();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,27 +30,17 @@ public class ProgressActivity extends Activity {
 		
 		// Intent
 		Intent intent = getIntent();
-		Log.i(TAG, "Intent: "+intent.getAction()+" / "+intent.hasExtra(ACTION_HIDE_PROGRESS));
+		//Log.i(TAG, "Intent: "+intent.getAction()+" / "+intent.hasExtra(ACTION_HIDE_PROGRESS));
 		if (intent.hasExtra(ACTION_HIDE_PROGRESS)) {
 			finish();
 			this.overridePendingTransition(0, 0);
 			
 			return;
 		}
-		//Se puede prescindir de estos parámetros, no tienen importancia
-		// Parameters
-		/*Bundle extras = intent.getExtras();
-		boolean showOverlay = extras == null || extras.getBoolean(EXTRA_SHOW_OVERLAY, true);
-		boolean isFullscreen = extras != null && extras.getBoolean(EXTRA_IS_FULLSCREEN, false);
-
-		// Fullscreen
-		if (isFullscreen) {
-			requestWindowFeature(Window.FEATURE_NO_TITLE);
-			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		}*/
 
 		// ProgressBar
 		ProgressBar progressBar = new ProgressBar(this,null,android.R.attr.progressBarStyle);
+
         TextView textView = new TextView(this,null,android.R.attr.textAppearanceMedium);
         textView.setText("Procesando");
         textView.setTextColor(Color.WHITE);
@@ -81,7 +67,7 @@ public class ProgressActivity extends Activity {
 	
 	@Override
 	protected void onNewIntent(Intent intent) {
-		Log.i(TAG, "Intent: "+intent.getAction()+" / "+intent.hasExtra(ACTION_HIDE_PROGRESS));
+		//Log.i(TAG, "Intent: "+intent.getAction()+" / "+intent.hasExtra(ACTION_HIDE_PROGRESS));
 		if (intent.hasExtra(ACTION_HIDE_PROGRESS)) {
 			finish();
 			this.overridePendingTransition(0, 0);
