@@ -23,6 +23,17 @@
 -(void)show:(CDVInvokedUrlCommand*)options
 {
     NSMutableDictionary* params = [options.arguments objectAtIndex:0];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.viewController.view.frame.size.width,self.viewController.view.frame.size.height)];
+    view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.85f];
+    
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0,self.viewController.view.frame.size.height/2 -30, self.viewController.view.frame.size.width, 100)];
+    label.text=@"Procesando";
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+
+    [view addSubview:label];
+    [self.viewController.view addSubview:view];
     
     // Parse parameters
     if([params objectForKey:PARAM_AUTO_HIDE_TIMEOUT])
@@ -72,7 +83,7 @@
         {
             // portrait
             frame.size.width = self.viewController.view.frame.size.width;
-            frame.size.height = self.viewController.view.frame.size.height;
+            frame.size.height = self.viewController.view.frame.size.height - 30;
         }
         indicator.frame = frame;
         indicator.layer.cornerRadius = 0;
@@ -84,19 +95,15 @@
         [indicator removeFromSuperview];
     }
     
-    if( showOverlay )
-    {
-        indicator.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.6f];
-    }
-    
     if( connectionTimeout > 0 )
     {
         NSTimer *timer __attribute__((unused))= [NSTimer scheduledTimerWithTimeInterval:connectionTimeout target:self selector:@selector(hideAfterTimeout:) userInfo:Nil repeats:NO];
     }
     
-    [self.viewController.view addSubview:indicator];
+    [view addSubview:indicator];
     [indicator startAnimating];
 }
+
 
 -(void)hideAfterTimeout:(NSTimer*)timer
 {
