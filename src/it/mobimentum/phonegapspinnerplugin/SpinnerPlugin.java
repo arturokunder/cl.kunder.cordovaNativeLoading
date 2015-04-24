@@ -59,15 +59,13 @@ public class SpinnerPlugin extends CordovaPlugin {
 		// Loading spinner
 		Intent intent = new Intent(context, ProgressActivity.class);
 		context.startActivity(intent);
-		
+		context.overridePendingTransition(0, 0);
 		return true;
 	}
 	
 	private boolean hide(Activity context) {
 		// Loading spinner
-		Intent intent = new Intent(context, ProgressActivity.class);
-		intent.putExtra(ProgressActivity.ACTION_HIDE_PROGRESS, true);
-		context.startActivity(intent);
+		ProgressActivity.detenerLoading();
 		
 		return true;
 	}
