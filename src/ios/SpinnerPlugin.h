@@ -15,6 +15,7 @@
     UIActivityIndicatorView* indicator;
     BOOL showOverlay;
     int connectionTimeout;
+    UIView *view;
 }
 
 -(void)hide:(CDVInvokedUrlCommand*)options;

@@ -22,21 +22,22 @@
 
 -(void)show:(CDVInvokedUrlCommand*)options
 {
-    NSMutableDictionary* params = [options.arguments objectAtIndex:0];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.viewController.view.frame.size.width,self.viewController.view.frame.size.height)];
-    view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
-    
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0,self.viewController.view.frame.size.height/2 -30, self.viewController.view.frame.size.width, 100)];
-    label.text=@"Procesando";
-    label.textColor = [UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-
-    [view addSubview:label];
-    [self.viewController.view addSubview:view];
         
-    if(!indicator)
+    if(!view)
     {
+        NSMutableDictionary* params = [options.arguments objectAtIndex:0];
+        view = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.viewController.view.frame.size.width,self.viewController.view.frame.size.height)];
+        view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
+        
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0,self.viewController.view.frame.size.height/2 -30, self.viewController.view.frame.size.width, 100)];
+        label.text=@"Procesando";
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        [view addSubview:label];
+        [self.viewController.view addSubview:view];
+        
         indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         
         // center indicator and resize/colorize frame (take screen orientation into account)
@@ -60,21 +61,24 @@
         indicator.layer.cornerRadius = 0;
         indicator.opaque = YES;
         indicator.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+        
+        [view addSubview:indicator];
+        [indicator startAnimating];
     }
     else
     {
-        [indicator removeFromSuperview];
+        [view removeFromSuperview];
     }
     
-    [view addSubview:indicator];
-    [indicator startAnimating];
+    
 }
 
 -(void)hide:(CDVInvokedUrlCommand*)options
 {
-    [indicator stopAnimating];
-    [indicator removeFromSuperview];
-    indicator = nil;
+    //[indicator stopAnimating];
+    [view removeFromSuperview];
+    view = nil;
 }
+
 
 @end
