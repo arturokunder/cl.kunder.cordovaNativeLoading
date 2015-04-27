@@ -65,11 +65,6 @@
         [view addSubview:indicator];
         [indicator startAnimating];
     }
-    else
-    {
-        [view removeFromSuperview];
-    }
-    
     
 }
 
