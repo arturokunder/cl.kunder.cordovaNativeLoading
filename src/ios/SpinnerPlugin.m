@@ -24,7 +24,7 @@
 {
     NSMutableDictionary* params = [options.arguments objectAtIndex:0];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.viewController.view.frame.size.width,self.viewController.view.frame.size.height)];
-    view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.85f];
+    view.backgroundColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
     
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0,self.viewController.view.frame.size.height/2 -30, self.viewController.view.frame.size.width, 100)];
