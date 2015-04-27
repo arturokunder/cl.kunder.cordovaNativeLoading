@@ -16,13 +16,14 @@ public class SpinnerPlugin extends CordovaPlugin {
 	private static final String PARAM_SHOW_OVERLAY = "overlay";
 	private static final String PARAM_SHOW_TIMEOUT = "timeout";
 	private static final String PARAM_IS_FULLSCREEN = "fullscreen";
+	private static Activity context;
 	
 	private boolean isShown = false;
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-		final Activity context = this.cordova.getActivity();
+		context = this.cordova.getActivity();
 		
 		if (action.equals("show"))
 		{
@@ -57,7 +58,7 @@ public class SpinnerPlugin extends CordovaPlugin {
 	
 	private boolean show(final Activity context) {
 		// Loading spinner
-		plugin.cordova.getActivity().runOnUiThread(new Runnable() {
+		context.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				Intent intent = new Intent(context, ProgressActivity.class);
@@ -70,7 +71,7 @@ public class SpinnerPlugin extends CordovaPlugin {
 	
 	private boolean hide(Activity context) {
 		// Loading spinner
-		plugin.cordova.getActivity().runOnUiThread(new Runnable() {
+		context.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				ProgressActivity.detenerLoading();
