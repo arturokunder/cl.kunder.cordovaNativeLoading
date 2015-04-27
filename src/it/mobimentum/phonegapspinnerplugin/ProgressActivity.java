@@ -32,9 +32,7 @@ public class ProgressActivity extends Activity {
 		Intent intent = getIntent();
 		//Log.i(TAG, "Intent: "+intent.getAction()+" / "+intent.hasExtra(ACTION_HIDE_PROGRESS));
 		if (intent.hasExtra(ACTION_HIDE_PROGRESS)) {
-			finish();
-			this.overridePendingTransition(0, 0);
-			
+			finish();			
 			return;
 		}
 
@@ -68,7 +66,6 @@ public class ProgressActivity extends Activity {
 	public static void detenerLoading(){
 		if(activity != null){
 			activity.finish();
-			activity.overridePendingTransition(0, 0);
 			activity = null;
 		}
 		
