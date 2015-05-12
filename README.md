@@ -3,7 +3,7 @@ phonegap-plugin-loading-spinner
 
 PhoneGap 3 plugin to show a loading spinner with optional dark overlay.
 
-![screenshot](https://raw.github.com/mobimentum/phonegap-plugin-loading-spinner/master/screenshot.png "Screenshot")
+![screenshot](https://raw.github.com/kunder-lab/cl.kunder.cordovaNativeLoading/master/screenshot.png "Screenshot")
 
 
 Usage
@@ -11,18 +11,15 @@ Usage
 
 Add plugin to your project:
 
-    cordova plugin add https://github.com/mobimentum/phonegap-plugin-loading-spinner.git
+    cordova plugin add https://github.com/kunder-lab/cl.kunder.cordovaNativeLoading
 
-Add the following to your config.xml to use version 1.0.0 of this plugin (recommended):
 
-    <gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
-	
 You can also omit the version tag to always use the most recent version of this plugin. Note that this will result in your app being automatically updated with new versions of this plugin as they are released, and may result in unexpected behaviour.
 
 Show spinner with default arguments:
 
     spinnerplugin.show();
-    
+
 Show spinner with optional arguments:
 
     spinnerplugin.show({
@@ -48,13 +45,15 @@ I encourage you to use the following code to gracefully replace the default jQM 
 					// Show/hide spinner
 					var arg = arguments ? arguments[0] : '';
 					if (arg == 'show') spinnerplugin.show({'overlay':true});
-					else if (arg == 'hide') spinnerplugin.hide();			
+					else if (arg == 'hide') spinnerplugin.hide();
 
 					// Compatibility with jQM 1.4
 					return { loader: function() { } }
 				}
-			});	
+			});
 		}
 	}
 
 Thus, if the SpinnerPlugin is added and working the native spinner would be used, otherwise the standard jQM loader is fired.
+
+Forked from https://github.com/mobimentum/phonegap-plugin-loading-spinner
