@@ -8,21 +8,32 @@ import org.json.JSONObject;
 
 import android.R.bool;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Handler;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class SpinnerPlugin extends CordovaPlugin {
 	
 	private static final String PARAM_SHOW_OVERLAY = "overlay";
 	private static final String PARAM_SHOW_TIMEOUT = "timeout";
 	private static final String PARAM_IS_FULLSCREEN = "fullscreen";
+	private static Activity activity;
+	private static Dialog dialog;
 	
 	private boolean isShown = false;
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-		final Activity context = this.cordova.getActivity();
+		activity = this.cordova.getActivity();
 		
 		if (action.equals("show"))
 		{
@@ -31,7 +42,7 @@ public class SpinnerPlugin extends CordovaPlugin {
 				isShown = true;
 
 				// Show
-				show(context);
+				show(activity);
 			}
 			
 			callbackContext.success();
@@ -44,7 +55,7 @@ public class SpinnerPlugin extends CordovaPlugin {
 				isShown = false;
 				
 				// Hide
-				hide(context);
+				hide(activity);
 			}
 			
 			callbackContext.success();
@@ -55,19 +66,52 @@ public class SpinnerPlugin extends CordovaPlugin {
 		return false;
 	}
 	
-	private boolean show(final Activity context) {
+	private boolean show(final Activity activity) {
 		// Loading spinner
-		Intent intent = new Intent(context, ProgressActivity.class);
-		context.startActivity(intent);
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				dialog = new Dialog(activity,android.R.style.Theme_Translucent_NoTitleBar);
+                ProgressBar progressBar = new ProgressBar(activity,null,android.R.attr.progressBarStyle);
+
+                TextView textView = new TextView(activity,null,android.R.attr.textAppearanceMedium);
+                textView.setText("Procesando");
+                textView.setTextColor(Color.WHITE);
+                LinearLayout.LayoutParams paramsTextView = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                paramsTextView.setMargins(0,20,0,0);
+                textView.setLayoutParams(paramsTextView);
+
+                LinearLayout linearLayout = new LinearLayout(activity);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                RelativeLayout layoutPrincipal = new RelativeLayout(activity);
+                layoutPrincipal.setBackgroundColor(Color.parseColor("#000000"));
+
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                linearLayout.addView(progressBar);
+                linearLayout.addView(textView);
+                linearLayout.setLayoutParams(params);
+
+                layoutPrincipal.addView(linearLayout);
+
+                dialog.setContentView(layoutPrincipal);
+                dialog.show();
+			}
+	  	});
 		
 		return true;
 	}
 	
 	private boolean hide(Activity context) {
 		// Loading spinner
-		Intent intent = new Intent(context, ProgressActivity.class);
-		intent.putExtra(ProgressActivity.ACTION_HIDE_PROGRESS, true);
-		context.startActivity(intent);
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				dialog.hide();
+			}
+	  	});
+		
 		
 		return true;
 	}
