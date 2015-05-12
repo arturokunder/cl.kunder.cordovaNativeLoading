@@ -1,4 +1,4 @@
-phonegap-plugin-loading-spinner
+Cordova Plugin Native Loading
 ===============================
 
 PhoneGap 3 plugin to show a loading spinner with optional dark overlay.
