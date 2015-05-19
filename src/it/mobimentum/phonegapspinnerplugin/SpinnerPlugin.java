@@ -115,4 +115,9 @@ public class SpinnerPlugin extends CordovaPlugin {
 		
 		return true;
 	}
+
+	@Override
+    public void onBackPressed() {
+        //detenerLoading();
+    }
 }
