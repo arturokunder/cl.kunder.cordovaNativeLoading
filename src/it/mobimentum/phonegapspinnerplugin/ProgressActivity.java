@@ -49,7 +49,7 @@ public class ProgressActivity extends Activity {
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         RelativeLayout layoutPrincipal = new RelativeLayout(this);
-        layoutPrincipal.setBackgroundColor(Color.parseColor("#000000"));
+        layoutPrincipal.setBackgroundColor(Color.parseColor("#d9000000"));
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.CENTER_IN_PARENT);
