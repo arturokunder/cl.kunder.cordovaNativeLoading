@@ -84,7 +84,7 @@ public class SpinnerPlugin extends CordovaPlugin {
                 LinearLayout linearLayout = new LinearLayout(activity);
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 RelativeLayout layoutPrincipal = new RelativeLayout(activity);
-                layoutPrincipal.setBackgroundColor(Color.parseColor("#000000"));
+                layoutPrincipal.setBackgroundColor(Color.parseColor("#d9000000"));
 
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 params.addRule(RelativeLayout.CENTER_IN_PARENT);
@@ -115,4 +115,9 @@ public class SpinnerPlugin extends CordovaPlugin {
 
 		return true;
 	}
+
+	@Override
+    public void onBackPressed() {
+        //detenerLoading();
+    }
 }
