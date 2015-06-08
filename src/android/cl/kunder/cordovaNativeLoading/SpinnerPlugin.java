@@ -96,6 +96,21 @@ public class SpinnerPlugin extends CordovaPlugin {
                 layoutPrincipal.addView(linearLayout);
 
                 dialog.setContentView(layoutPrincipal);
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+		            @Override
+		            public void onCancel(DialogInterface dialogInterface) {
+
+		            }
+		        });
+		        dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+		            @Override
+		            public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
+		                if(keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK)
+		                    return true;
+		                return false;
+		            }
+		        });
+                
                 dialog.show();
 			}
 	  	});
