@@ -10,6 +10,8 @@ import android.R.bool;
 import android.app.Activity;
 import android.os.Handler;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.view.KeyEvent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
