@@ -1,0 +1,31 @@
+{
+  "name": "SpinnerPlugin",
+  "version": "1.2.1",
+  "description": "A native loading indicator",
+  "cordova": {
+    "id": "cl.kunder.cordovaNativeLoading",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yvera-kunder/cl.kunder.cordovaNativeLoading.git"
+  },
+  "keywords": [
+    "cordova",
+    "loading",
+    "indicator",
+    "spinner",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "yvera-kunder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvera-kunder/cl.kunder.cordovaNativeLoading/issues"
+  },
+  "homepage": "https://github.com/yvera-kunder/cl.kunder.cordovaNativeLoading#readme"
+}
