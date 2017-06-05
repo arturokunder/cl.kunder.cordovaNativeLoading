@@ -3,7 +3,7 @@
   "version": "1.2.1",
   "description": "A native loading indicator",
   "cordova": {
-    "id": "it.mobimentum.phonegapspinnerplugin",
+    "id": "cl.kunder.cordovaNativeLoading",
     "platforms": [
       "android",
       "ios"
