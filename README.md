@@ -5,6 +5,7 @@ PhoneGap 3 plugin to show a loading spinner with optional dark overlay.
 
 ![screenshot](https://raw.github.com/kunder-lab/cl.kunder.cordovaNativeLoading/master/screenshot.png "Screenshot")
 
+
 Usage
 =====
 

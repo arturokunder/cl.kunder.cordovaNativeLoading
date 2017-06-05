@@ -22,7 +22,7 @@
     "cordova-android",
     "cordova-ios"
   ],
-  "author": "yvera-kunder",
+  "author": "kunder",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kunder-lab/cl.kunder.cordovaNativeLoading/issues"
