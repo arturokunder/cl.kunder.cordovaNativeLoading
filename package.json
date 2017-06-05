@@ -14,7 +14,7 @@
     "url": "git+https://github.com/kunder-lab/cl.kunder.cordovaNativeLoading.git"
   },
   "keywords": [
-    "phonegap",
+    "cordova",
     "loading",
     "indicator",
     "spinner",
