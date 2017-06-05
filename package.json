@@ -1,5 +1,5 @@
 {
-  "name": "phonegap-plugin-loading-spinner",
+  "name": "SpinnerPlugin",
   "version": "1.2.1",
   "description": "A native loading indicator",
   "cordova": {
