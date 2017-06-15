@@ -1,9 +1,9 @@
 {
-  "name": "SpinnerPlugin",
+  "name": "kunder-cordova-native-loading",
   "version": "1.3.0",
   "description": "A native loading indicator",
   "cordova": {
-    "id": "cl.kunder.cordovaNativeLoading",
+    "id": "kunder-cordova-native-loading",
     "platforms": [
       "android",
       "ios"
