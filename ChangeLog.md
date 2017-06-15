@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## v1.3.1
+
+### Description
+Se realizan correcciones en el id y nombre del plugin.
+
+### Changelog
+a9100327a4b10f5f8a3855ed040fbb1d12937ebc - cambio de nombre siguiendo las notaciones actuales
+7695927419dde9593c6e0607f9983431314c4802 - corrección
+a7a6eab6fc939e30ab2a38354749abb49a362ac8 - se modifican las variable id y name
+fe7a20730f0285a2eb66e6ef266cf33f506be5a2 - modificación id del plugin
+6289bf39a36abf62231fb68fad6662a31e8a31a5 - modificación variable "name"
+96568e9f9bad2761d0ce3dc7d48035c5b764dde0 - se remueve .classpath
+303203514e354df40a76b93415c03f729b19e490 - modificación keywords
+708430887181ace2bba6a298d581757ff9dfdff9 - corrección nombre author
+f4937edf4354d0961c305a2c33be2d1956e090f9 - modificación a version del plugin
+cb64e3ed46581cc55698e27ffcf31d99cfc87de9 - cambio de nombre en plugin
+f4ed0a638503efe45b9c62de6df8622021d6ce1b - actualización plugin
+603e4218fac9fd679a9307fe1e86d0b22b7c83b8 - version fix
+71fff7b3d911735755c6d14007598b570aeafde5 - name fix
+0308a586996347f7a798b9c469b7431b7c80daaa - package.json
+5e60f8f019b844f061a7b2b39be85964d3651042 - Removed empty intent-filter tags to prevent error in processing of application manifest
+0c9dcb9006d68734ea316f56abe3e04e393d2de5 - Fix indentation
+87291ffb2746f583162eca96a84128100942b923 - Updated README with compatibility explanation
+
 ## v1.3.0
 
 ### Description
