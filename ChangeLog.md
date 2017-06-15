@@ -6,6 +6,7 @@
 Se realizan correcciones en el id y nombre del plugin.
 
 ### Changelog
+24a172e11d09f5c76ab65ec7241f6c3d27cd943b - Se reemplazan los nombres y IDs a kunder-cordova-plugin-native-loading
 a9100327a4b10f5f8a3855ed040fbb1d12937ebc - cambio de nombre siguiendo las notaciones actuales
 7695927419dde9593c6e0607f9983431314c4802 - corrección
 a7a6eab6fc939e30ab2a38354749abb49a362ac8 - se modifican las variable id y name
