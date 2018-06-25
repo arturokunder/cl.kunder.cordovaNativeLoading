@@ -125,7 +125,7 @@ public class SpinnerPlugin extends CordovaPlugin {
 		activity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				dialog.hide();
+				dialog.dismiss();
 			}
 	  	});
 
