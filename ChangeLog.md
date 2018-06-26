@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.3.2
+
+### Description
+Se corrige el problema de mostrar el dialogo con loading detenido en ciertos casos en Android 8+, ya que se muestra el loading en primer plano en vez de ser descartado.
+
+### Changelog
+6de15cba8292933272533ce79894d1b4f3010d34 - Se modifica evento al cerrar dialog
+
 ## v1.3.1
 
 ### Description
